@@ -6,7 +6,7 @@ services:
     build:
       context: ./dbt
       dockerfile: Dockerfile
-    container_name: 'dash'
+    container_name: 'dbt'
     # M1 macの場合
     #platform: linux/x86_64
     restart: always
@@ -19,6 +19,6 @@ services:
       #- "127.0.0.1:8050:8050"
     working_dir: '/root/'
     volumes:
-      - /Users/tanakatouma/vscode/ds_mlops/dbt/src/:/root/src/
+      - /Users/tanakatouma/vscode/dbt-docker/dbt/src/:/root/src/
 #      - /Users/tanakatouma/Documents/Docker_volumes/ds_mlops/dash:/root/dash/
 

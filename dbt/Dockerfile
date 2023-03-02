@@ -1,17 +1,20 @@
-
-FROM python:3
+FROM python:3.9.13-buster
 USER root
+
+# environment
+ENV LANG="ja_JP.UTF-8" \
+    LANGUAGE="ja_JP:ja" \
+    LC_ALL="ja_JP.UTF-8"
+ENV TZ JST-9
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     tzdata \
-    curl 
-RUN apt-get -y install locales && \
-    localedef -f UTF-8 -i ja_JP ja_JP.UTF-8
-ENV LANG ja_JP.UTF-8
-ENV LANGUAGE ja_JP:ja
-ENV LC_ALL ja_JP.UTF-8
-ENV TZ JST-9
-ENV TERM xterm
+    curl \
+    zip
+
+RUN curl -OL https://github.com/duckdb/duckdb/releases/download/v0.6.1/duckdb_cli-osx-universal.zip
+RUN unzip duckdb_cli-osx-universal.zip
+
 
 RUN apt-get install -y vim less
 RUN pip install --upgrade pip
