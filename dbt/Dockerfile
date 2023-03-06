@@ -1,4 +1,4 @@
-FROM python:3.9.13-buster
+FROM python:3.9.16-slim-buster
 USER root
 
 # environment
@@ -10,13 +10,9 @@ ENV TZ JST-9
 RUN apt-get update && apt-get install -y --no-install-recommends \
     tzdata \
     curl \
-    zip
+    vim \
+    zip 
 
-RUN curl -OL https://github.com/duckdb/duckdb/releases/download/v0.6.1/duckdb_cli-osx-universal.zip
-RUN unzip duckdb_cli-osx-universal.zip
-
-
-RUN apt-get install -y vim less
 RUN pip install --upgrade pip
 RUN pip install --upgrade setuptools
 
